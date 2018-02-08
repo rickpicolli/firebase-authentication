@@ -43,6 +43,10 @@
         </div>
           <button id="signIn">Sign In With Google</button>
     </div>
+
+    <span id="clientName"></span>
+    <img id="clientPhoto" src"">
+
   
              
             
@@ -74,6 +78,9 @@
     // The signed-in user info.
     var user = result.user;
     console.log(user.displayName);
+
+    document.getElementById("clientName").innerHTML = user.displayName;
+    document.getElementById("clientPhoto").setAttribute("src", user.photoURL);
 
   }).catch(function(error) {
     // console.log("error", error)
