@@ -27,7 +27,7 @@
 
 	<button id="signIn">Sign In With Google</button>
   <span id="clientName"></span>
-  <span id="clientPhoto"></span>
+  <img id="clientPhoto" src="">
              
             
 <script type="text/javascript">
@@ -71,7 +71,7 @@
 
   function app(user) {
     document.getElementById("clientName").innerHTML ="Hello " + user.displayName;
-    document.getElementById("clientPhoto").innerHTML = user.photoURL;
+    document.getElementById("clientPhoto").setAttribute("src", user.photoURL);
 
 
   }
