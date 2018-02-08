@@ -39,15 +39,11 @@
         <div class="buttons">
             <!-- <a href="dashboard.html"> -->
                 <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
             <!-- </a> -->
         </div>
-          <button id="signIn">Sign In With Google</button>
+          <button id="google-btn">Sign In With Google</button>
     </div>
-
-    <span id="clientName"></span>
-    <img id="clientPhoto" src"">
-
-  
              
             
 <script type="text/javascript">
@@ -55,7 +51,7 @@
 
 
 
-  $("#signIn").on("click", function() {
+  $("#google-btn").on("click", function() {
  
     // event.preventDefault();
     // console.log("click");
@@ -79,9 +75,6 @@
     var user = result.user;
     console.log(user.displayName);
 
-    document.getElementById("clientName").innerHTML = user.displayName;
-    document.getElementById("clientPhoto").setAttribute("src", user.photoURL);
-
   }).catch(function(error) {
     // console.log("error", error)
     // Handle Errors here.
@@ -97,6 +90,26 @@
 
 
 
+});
+
+$(".signup-btn").on("click", function() {
+
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+});
+
+$(".login-btn").on("click", function() {
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
 });
 
 //we need to create a function that once the user is logged in, then change to the next page
