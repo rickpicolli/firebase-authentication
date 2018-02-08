@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<!-- <meta name="google-signin-client_id" content="937021709360-8mhd249ib635g5jaghbqf1r0dm6qf4ep.apps.googleusercontent.com">
-  	<meta name="google-signin-cookiepolicy" content="single_host_origin">
-  	<meta name="google-signin-scope" content="profile email"> -->
-  	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-  	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+  <title></title>
+  <meta name="google-signin-client_id" content="937021709360-8mhd249ib635g5jaghbqf1r0dm6qf4ep.apps.googleusercontent.com">
+    <meta name="google-signin-cookiepolicy" content="single_host_origin">
+    <meta name="google-signin-scope" content="profile email">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
-</head>
-<body>
-			
-<!--   <form>                
-    <label>Email</label>
-    <input id="email">                     
-  </form>
-  <form>                    
-    <label>Password</label>
-    <input id="password">
-  </form>
-    <br><br>
-    <button id="btLogin">Login</button> -->
-	<button id="signIn">Sign In With Google</button>
+<!-- </head>
+<body class="index">
+    <div class="img"></div>
+    <div class="signin">
+        <div class="title">THE JOB ORGANIZER</div>
+        <div class="description">
+            <p>A platform to organize and connect a user’s job search. We allow user’s to organize and track their job search
+                process, from establishing connections to recruiters and etc. Additionally, user’s can be matched with jobs
+                (indeed API or whatever) based off of similar postings/interests.
+            </p>
+        </div>
+        <form class="username-form">
+            <input type="text" placeholder="username">
+            <input type="text" placeholder="password">
+        </form>
+        <div class="buttons">
+            <a href="dashboard.html">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
+
+    </div> -->
+  <button class="login-btn">Sign In With Google</button>
              
             
 <script type="text/javascript">
@@ -31,13 +42,7 @@
 
 
 
-  // var provider = new firebase.auth.GoogleAuthProvider();
-  // provider.addScope('profile');
-  // provider.addScope('email');
-
-  // $(document).on('click', '.signIn', function() {
-
-  $("#signIn").on("click", function() {
+  $(".login-btn").on("click", function() {
     // event.preventDefault();
     console.log("click")
 
@@ -46,12 +51,13 @@
     var provider = new firebase.auth.GoogleAuthProvider();
     console.log("provider", provider);
 
-    firebase.auth().getRedirectResult().then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function(result) {
       console.log("result", result)
     if (result.credential) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
     // ...
+    console.log(token);
   }
   // The signed-in user info.
   var user = result.user;
@@ -87,7 +93,6 @@
     messagingSenderId: "937021709360"
   };
   firebase.initializeApp(config);
-
 </script>
 
 
