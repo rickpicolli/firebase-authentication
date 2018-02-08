@@ -92,10 +92,10 @@
 
 });
 
-$(".signup-btn").on("click", function() {
+var email = $("#username").val().trim();
+var password = $("#password").val().trim();
 
-  var email = $("#username").val().trim();
-  var password = $("#password").val().trim();
+$(".signup-btn").on("click", function() {
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
   // Handle Errors here.
