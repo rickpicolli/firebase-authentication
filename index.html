@@ -5,8 +5,8 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
   <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 <script>
@@ -54,14 +54,14 @@
   $("#signIn").on("click", function() {
  
     // event.preventDefault();
-    console.log("click");
+    // console.log("click");
 
 
 
     var provider = new firebase.auth.GoogleAuthProvider();
 
   
-    console.log("provider", provider);
+    // console.log("provider", provider);
 
     firebase.auth().signInWithPopup(provider).then(function(result) {
       console.log("result", result)
@@ -73,10 +73,10 @@
     }
     // The signed-in user info.
     var user = result.user;
-    console.log(user);
+    console.log(user.displayName);
 
   }).catch(function(error) {
-    console.log("error", error)
+    // console.log("error", error)
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -92,6 +92,7 @@
 
 });
 
+//we need to create a function that once the user is logged in, then change to the next page
 
 
 
