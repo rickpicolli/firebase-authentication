@@ -2,14 +2,10 @@
 <html>
 <head>
 	<title></title>
-	<!-- <meta name="google-signin-client_id" content="937021709360-8mhd249ib635g5jaghbqf1r0dm6qf4ep.apps.googleusercontent.com">
+	<meta name="google-signin-client_id" content="937021709360-8mhd249ib635g5jaghbqf1r0dm6qf4ep.apps.googleusercontent.com">
   	<meta name="google-signin-cookiepolicy" content="single_host_origin">
-  	<meta name="google-signin-scope" content="profile email"> -->
-  	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-  	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-
+  	<meta name="google-signin-scope" content="profile email">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 <script>
@@ -28,39 +24,22 @@
 
 </head>
 <body>
-			
-<!--   <form>                
-    <label>Email</label>
-    <input id="email">                     
-  </form>
-  <form>                    
-    <label>Password</label>
-    <input id="password">
-  </form>
-    <br><br>
-    <button id="btLogin">Login</button> -->
+
 	<button id="signIn">Sign In With Google</button>
              
             
 <script type="text/javascript">
-
-
-
-
-  // var provider = new firebase.auth.GoogleAuthProvider();
-  // provider.addScope('profile');
-  // provider.addScope('email');
-
-  // $(document).on('click', '.signIn', function() {
 
   $("#signIn").on("click", function() {
  
     // event.preventDefault();
     console.log("click")
 
-    
+
 
     var provider = new firebase.auth.GoogleAuthProvider();
+
+  
     console.log("provider", provider);
 
     firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -70,22 +49,32 @@
       var token = result.credential.accessToken;
     // ...
     console.log(token);
-  }
-  // The signed-in user info.
-  var user = result.user;
-}).catch(function(error) {
-  console.log("error", error)
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
-});
+    }
+    // The signed-in user info.
+    var user = result.user;
+    console.log(user);
+
+  }).catch(function(error) {
+    console.log("error", error)
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+
+    // ...
+  });
+
+
+
 
 });
+
+
+
+
 
 
 
