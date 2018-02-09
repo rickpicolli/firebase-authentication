@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head>
 <meta name="google-signin-client_id" content="937021709360-8mhd249ib635g5jaghbqf1r0dm6qf4ep.apps.googleusercontent.com">
     <meta name="google-signin-cookiepolicy" content="single_host_origin">
     <meta name="google-signin-scope" content="profile email">
@@ -92,8 +95,8 @@
 
 });
 
-email = $("#username").val().trim();
-password = $("#password").val().trim();
+var email = $("#username").val().trim();
+var password = $("#password").val().trim();
 
 $(".signup-btn").on("click", function() {
 
@@ -111,7 +114,13 @@ $(".login-btn").on("click", function() {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
-  // ...
+
+  if (errorCode === 'auth/wrong-password') {
+    alert('Wrong password.');
+  } else {
+    alert(errorMessage);
+  }
+  console.log(error);
 });
 });
 
